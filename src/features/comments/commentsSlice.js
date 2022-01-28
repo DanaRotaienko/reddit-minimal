@@ -7,14 +7,9 @@ export const commentsSlice = createSlice({
         comments: {}
     },
     reducers: {
-        addComment: (state, action) => {
-            const {creator, commentId, time, text} = action.payload;
-            state.comments[commentId] = {
-                creator: creator,
-                commentId: commentId, 
-                time: time,
-                text: text
-            }
+        addComments: (state, action) => {
+            const {postId, comments} = action.payload;
+            state.comments[postId].push(comments);
         }
     }
 });
@@ -23,5 +18,5 @@ export const commentsSlice = createSlice({
 export const selectComments = (state) => state.comments.comments;
 
 //Exports 
-export const { addComment } = commentsSlice.actions;
+export const { addComments } = commentsSlice.actions;
 export default commentsSlice.reducer;

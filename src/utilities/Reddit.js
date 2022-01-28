@@ -1,17 +1,18 @@
 
 const redirectUri = 'http://localhost:3000/';
 let accessToken;
-let posts;
 
-async function getRedditPosts()  {
-    await fetch('https://www.reddit.com/r/books/hot.json').then(function(res) {
-  	    return res.json;
-    }).catch(function(error) {
-  	    console.log(error);
-    });
-  
-  console.log(data);
-}
+// Authorise to Reddit through Post login request to get an access token
 
-getRedditPosts();
+// 10 GET requests from reddit to receive object with information about 10 subreddits;
+
+// Loop through every post in info.book (ex) to get comments:
+/* 
+    for (let post in info.book (check object structure)) {
+        let data = fetch(apiToGetComents);
+        post[comment] = data;
+    }
+*/
+
+//export all_info 
 
