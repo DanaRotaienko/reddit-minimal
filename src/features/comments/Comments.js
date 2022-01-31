@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectComments, addComments } from "./commentsSlice";
 // import all info from api
 
-// We have subreddit, postId and timeOfPublication in props
+// Component has subreddit, postId and timeOfPublication in props
 
 export default function Comments() {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function Comments() {
         });
         comments = useSelector(selectComments);
     }
-    // Upload comments
+    // Upload comments here
 
     const changeVisibility = () => {
         notHidden = notHidden ? false : true;
@@ -39,7 +39,7 @@ export default function Comments() {
         })
     }
 
-    // Add function to compare dates if date is in Date format 
+    // Function to compare dates if date is in Date format 
 
     return (
         <section className="postFooter">

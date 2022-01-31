@@ -8,15 +8,13 @@ export const postsSlice = createSlice({
     },
     reducers: {
         addPost: (state, action) => {
-            const {postId, creatorId, image, topic, comments, support} = action.payload;
-            state.posts[postId] = {
-                postId: postId,
-                creatorId: creatorId,
-                image: image, 
+            const {subreddit, topic, photo, publicationTime, postId} = action.payload;
+            state.posts[subreddit].push({
                 topic: topic,
-                comments: [],
-                support: {}
-            }
+                photo: photo,
+                publicationTime: publicationTime, 
+                postId: postId
+            })
         }
     }
 });
@@ -25,5 +23,5 @@ export const postsSlice = createSlice({
 export const selectPosts = (state) => state.posts.posts;
 
 //Exports 
-export const { addPost } = postsSlice.actions;
+export const { addPosts } = postsSlice.actions;
 export default postsSlice.reducer;

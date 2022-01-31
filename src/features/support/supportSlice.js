@@ -2,41 +2,46 @@ import { createSlice } from "@reduxjs/toolkit";
 
 //Creating Slice Object
 export const supportsSlice = createSlice({
-    name: 'posts',
+    name: 'supports',
     initialState: {
         supports: {}
     },
     reducers: {
-        addSupport: (state, action) => {
-            const {supportId, supports, postId} = action.payload;
-            state.supports[supportId] = {
-                supportId: supportId,
-                supported: false,
-                neglected: false,
-                supports: supports,
-                postId: postId
+        uploadSupport: (state, action) => {
+            const {postId, ups, downs, isUp, isDown} = action.payload;
+            state.supports[postId] = {
+                ups: ups,
+                downs: downs,
+                isUp: isUp,
+                isDown: isDown
             }
         },
-        toSupport: (postId, action) => {
-            const id = action.payload;
-            const supported = state.supports[id].supported ? false : true;
-            const toAdd = supported ? 1 : -1;
-
-            state.supports[id] = {
-                ...state.supports[id],
-                supported: supported,
-                supports: state.supports[id].supports + toAdd
+        addUp: (postId, action) => {
+            state.supports[postId] = {
+                ...state.supports[postId],
+                ups: state.supports[postId] + 1,
+                isUp: true
             }
         },
-        toNeglect: (postId, action) => {
-            const id = action.payload;
-            const neglected = state.supports[id].neglected ? false : true;
-            const toAdd = neglected ? -1 : 1;
-
-            state.supports[id] = {
-                ...state.supports[id],
-                neglected: neglected,
-                supports: state.supports[id].supports + toAdd
+        addDown: (postId, action) => {
+            state.supports[postId] = {
+                ...state.supports[postId],
+                downs: state.supports[postId] + 1,
+                isDown: true
+            }
+        },
+        removeUp: (postId, action) => {
+            state.supports[postId] = {
+                ...state.supports[postId],
+                ups: state.supports[postId] - 1,
+                isUp: false
+            }
+        },
+        removeDown: (postId, action) => {
+            state.supports[postId] = {
+                ...state.supports[postId],
+                downs: state.supports[postId] - 1,
+                isDown: false
             }
         }
     }
@@ -46,5 +51,5 @@ export const supportsSlice = createSlice({
 export const selectSupports = (state) => state.supports.supports;
 
 //Exports 
-export const { addSupport, toSupport, toNeglect } = supportsSlice.actions;
+export const { uploadSupport, addUp, addDown, removeUp, removeDown } = supportsSlice.actions;
 export default supportsSlice.reducer;

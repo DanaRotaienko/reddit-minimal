@@ -12,7 +12,7 @@ export default function SearchTerm() {
         term = useSelector(selectTerm);
     }
 
-    // Bedore </header> add <Link to={mathcUrl/search:${term}} element={<Posts>} />
+    // Bedore </header> add <Link to={mathcUrl{/search:${term}} element={<Posts>} />
     return (
         <header>
             <div className="logo">
