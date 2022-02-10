@@ -6,14 +6,15 @@ import Comments from "../comments/Comments";
 
 export default function Post() {
 
-    const {subreddit, topic, photo, publicationTime, postId} = props.post;
+    const {creator, topic, photo, publicationTime, postId} = props.post;
 
     render(
         <section className="post">
-            <Support subreddit={subreddit} postId={postId} />
+            {//<Support subreddit={subreddit} postId={postId} />
+            }
             <h2>{topic}</h2>
-            <img src={photo} />
-            <Comments subreddit={subreddit} postId={postId} publicationTime={publicationTime} />
+            <img src={photo} alt="photo"/>
+            <Comments creator={creator} postId={postId} publicationTime={publicationTime} />
         </section>
     )
 }

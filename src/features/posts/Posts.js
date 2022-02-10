@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import postsSlice, { addPosts, selectPosts } from "./postsSlice";
+import { addPosts, selectPosts } from "./postsSlice";
 import Post from "./Post";
-// import all info
+import { ALL_INFO } from "../../utilities/Reddit";
 
 export default function Posts() {
 

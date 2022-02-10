@@ -1,30 +1,72 @@
+import fetch from "node-fetch";
 
-const redirectUri = 'http://localhost:3000/';
-let accessToken;
+export let ALL_INFO = {};
 
-// Authorise to Reddit through Post login request to get an access token
-
-// 10 GET requests from reddit to receive object with information about 10 subreddits;
-
-// Create post ID with randomiser 
-fetch('https://www.reddit.com/r/books/new.json')
+// Function to receive data about posts from a certain subreddit
+export const getPostsRequest = async(subreddit) => {
+    return await fetch(`https://www.reddit.com/r/${subreddit}/hot.json`)
     .then(function(res) {
-        return res.json();   // Convert the data into JSON
-    })
-    .then(function(data) {
-        console.log(data);   // Logs the data to the console
+        return res.json();
+    }).then(function(data) {
+        return data;
     })
     .catch(function(err) {
-        console.log(err);   // Log error if any
+        console.log(err); 
     });
-// Loop through every post in info.book (ex) to get comments:
-/* 
-    for (let post in info.book (check object structure)) {
-        let data = fetch(apiToGetComents);
-        post[comment] = data;
-    }
-*/
+}
 
+// Function to receive data about comments from a certain post by postId, subreddit and topic
+export const getCommentsRequest = async(subreddit, postId, topic) => {
+    await fetch(`https://www.reddit.com/r/${subreddit}/comments/${postId}/${+topic}/.json`)
+    .then(function (res) {
+        return res.json();
+    }).then(function(data) {
+        return data;
+    })
+    .catch(function(err) {
+        console.log(err); 
+    });
+}
+
+// Function to store data retrieved from request of posts in one object
+const storeSubredditData = async(subreddit) => {
+    const data = await getPostsRequest(subreddit);
+    ALL_INFO[subreddit] = [];
+    data.data.children.map((post) => {
+        ALL_INFO[subreddit].push(
+            {
+                author: post.data.author,
+                postId: post.data.id,
+                postText: post.data.selftext,
+                topic: post.data.title,
+                publicationTime: post.data.created,
+                numComments: post.data.num_comments,
+                ups: post.data.ups,
+                downs: post.data.downs,
+                comments: []
+            }
+        )
+    })
+}
+
+/* const storeCommentsDataForPost = async(subreddit, postId, topic) => {
+    const data = await getCommentsRequest(subreddit, postId, topic);
+    console.log(data);
+    data[1].data.children.map((comment) => {
+        post.comments.push({
+            author: comment.data.author,
+            text: comment.data.body,
+            time: comment.data.created_utc
+        })
+    })
+} */
+
+// await console.log(ALL_INFO);
+// 10 GET requests from reddit to receive object with information about 10 subreddits;
+await storeSubredditData('books');
+await storeSubredditData('art');
+await storeSubredditData('philosophy');
+console.log(ALL_INFO);
 //export all_info 
 
 

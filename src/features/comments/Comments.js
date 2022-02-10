@@ -31,7 +31,7 @@ export default function Comments() {
             // Edit value according to object received from Reddit
             return (
                 <div className="comment">
-                    <p>{props.subreddit}</p>
+                    <p>{comm.author}</p>
                     <p>{comm.text}</p>
                     <p>{comm.time}</p>
                 </div>

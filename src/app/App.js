@@ -1,30 +1,30 @@
 import React from 'react';
 import {
-    BrowserRouter,
+    BrowserRouter as Router,
     Routes,
     Route,
     useRouteMatch
 } from "react-router-dom";
 import './App.css';
-import ROUTES from './Routes';
-import { Comments } from '../components/Comments';
-import { Posts } from '../components/Posts';
-import { Subreddits } from '../components/Subreddits';
-import { SearchTerm } from '../features/searchTerm/SearchTerm';
+import ROUTES from './Routes.js';
+import Comments from '../components/Comments.js';
+import Posts from '../components/Posts.js';
+import Subreddits from '../components/Subreddits.js';
+import SearchTerm from '../features/searchTerm/SearchTerm.js';
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path={ROUTES.searchBar()} element={<SearchTerm />} />
-        <Route path={ROUTES.posts()} element={<Posts />} />
+        <Route path={ROUTES.home()} element={<SearchTerm />} />
+        <Route path={ROUTES.home()} element={<Posts />} />
         <Route path={ROUTES.subreddits()} element={<Subreddits />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
-function PostsRoutes() {
+/*function PostsRoutes() {
   let match = useRouteMatch();
 
   return (
@@ -34,6 +34,6 @@ function PostsRoutes() {
       <Route path={`${match.path}/:commentId`} element={<Comments/>}/>
     </Routes>
   );
-}
+} */
 
 export default App;

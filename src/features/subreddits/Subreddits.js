@@ -13,7 +13,7 @@ export default function Subreddits() {
             {
                 ALL_INFO.forEach((subreddit) => {
                     <button type="subreddit" onClick={handleClick}>
-                        <img src={subreddit.icon} />
+                        <img src={subreddit.icon} alt="subreddit"/>
                         <p>{subreddit}</p>
                     </button>
                 })
