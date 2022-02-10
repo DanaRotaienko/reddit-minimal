@@ -16,28 +16,32 @@ export const supportsSlice = createSlice({
                 isDown: isDown
             }
         },
-        addUp: (postId, action) => {
+        addUp: (state, action) => {
+            const postId = action.payload;
             state.supports[postId] = {
                 ...state.supports[postId],
                 ups: state.supports[postId] + 1,
                 isUp: true
             }
         },
-        addDown: (postId, action) => {
+        addDown: (state, action) => {
+            const postId = action.payload;
             state.supports[postId] = {
                 ...state.supports[postId],
                 downs: state.supports[postId] + 1,
                 isDown: true
             }
         },
-        removeUp: (postId, action) => {
+        removeUp: (state, action) => {
+            const postId = action.payload;
             state.supports[postId] = {
                 ...state.supports[postId],
                 ups: state.supports[postId] - 1,
                 isUp: false
             }
         },
-        removeDown: (postId, action) => {
+        removeDown: (state, action) => {
+            const postId = action.payload;
             state.supports[postId] = {
                 ...state.supports[postId],
                 downs: state.supports[postId] - 1,

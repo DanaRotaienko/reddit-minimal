@@ -1,9 +1,8 @@
 const ROUTES = {
     comments: (id) => `/comments/${id}`,
-    posts: () => `/posts`,
+    home: () => `/`,
     postById: (id) => `/posts/${id}`,
     subreddits: () => `/subreddits`,
-    searchBar: () => `/`
 };
 
 export default ROUTES;
