@@ -1,5 +1,7 @@
 # Reddit Minimal
 
+Not finished
+
 ### Goal of the project
 
 This project was created by a prototype presented on a codecademy.com front-end course. The main goal was to practise and develope necessary skills in react, redux and routes. 
