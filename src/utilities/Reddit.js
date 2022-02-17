@@ -29,7 +29,7 @@ export const getCommentsRequest = async(subreddit, postId, topic) => {
 }
 
 // Function to store data retrieved from request of posts in one object
-const storeSubredditData = async(subreddit) => {
+export const storeSubredditData = async(subreddit) => {
     const data = await getPostsRequest(subreddit);
     ALL_INFO[subreddit] = [];
     data.data.children.map((post) => {
@@ -61,13 +61,7 @@ const storeSubredditData = async(subreddit) => {
     })
 } */
 
-// await console.log(ALL_INFO);
-// 10 GET requests from reddit to receive object with information about 10 subreddits;
-await storeSubredditData('books');
-await storeSubredditData('art');
-await storeSubredditData('philosophy');
 console.log(ALL_INFO);
-//export all_info 
 
 
 

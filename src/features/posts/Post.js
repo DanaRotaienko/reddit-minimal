@@ -1,6 +1,6 @@
 import React from "react";
-import Support from "../support/Support";
-import Comments from "../comments/Comments";
+//import Support from "../support/Support";
+//import Comments from "../comments/Comments";
 
 // Component has post object in props
 
@@ -14,7 +14,8 @@ export default function Post() {
             }
             <h2>{topic}</h2>
             <img src={photo} alt="photo"/>
-            <Comments creator={creator} postId={postId} publicationTime={publicationTime} />
+            {//<Comments creator={creator} postId={postId} publicationTime={publicationTime} />
+            }
         </section>
     )
 }

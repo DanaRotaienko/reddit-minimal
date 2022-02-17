@@ -1,8 +1,8 @@
-import { React } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchTerm, selectTerm } from "./searchTermSlice";
 
-function SearchTerm() {
+export default function SearchTerm() {
     let term;
     const dispatch = useDispatch();
     term = useSelector(selectTerm);
@@ -17,15 +17,13 @@ function SearchTerm() {
     return (
         <div id="search-bar">
             <div className="logo">
-                <img alt="icon"/>
+                <img src="../../data/Icons/tallinn-logo.png"/>
                 <p>RedditMinimal</p>
             </div>
             <div className="searchBar">
                 <input id="search" type="text" value={term} onChange={onChange}/>
-                <img alt="search"/>
+                <img src="../../data/Icons/magnify.png"/>
             </div>
         </div>
     )
-} 
-
-export default SearchTerm;
+}
