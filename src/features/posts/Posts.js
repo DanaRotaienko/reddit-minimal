@@ -2,16 +2,27 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addPosts, selectPosts } from "./postsSlice";
 import Post from "./Post";
+import { storeSubredditData } from "../../utilities/Reddit";
 import { ALL_INFO } from "../../utilities/Reddit";
 
 export default function Posts() {
 
     const dispatch = useDispatch();
 
-    const uploadPosts = () => {
+    // Upload posts
+    const loadingAllData = async() => {
+        await storeSubredditData('books');
+        await storeSubredditData('Art');
+        await storeSubredditData('gaming');
+        await storeSubredditData('philosophy');
+        await storeSubredditData('worldnews');
+    }
+
+    const uploadPosts = async() => {
+        await loadingAllData();
         ALL_INFO.forEach((subreddit) => {
             subreddit.forEach((post) => {
-                dispatch(addPost({
+                dispatch(addPosts({
                     subreddit: subreddit,
                     topic: post.topic,
                     photo: post.photo,
@@ -22,7 +33,7 @@ export default function Posts() {
         });
     }
 
-    // Upload posts
+    uploadPosts();
 
     const displayBySearch = (term) => {
         const posts = useSelector(selectPosts);
@@ -68,7 +79,9 @@ export default function Posts() {
 
     return(
         <section className="posts">
-            {selectPosts()}
+            {//selectPosts()
+            }
+            <p>Hi</p>
         </section>
     )
 

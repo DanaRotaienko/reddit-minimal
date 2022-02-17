@@ -3,14 +3,14 @@ import {
     BrowserRouter as Router,
     Routes,
     Route,
-    useRouteMatch
+    //useRouteMatch
 } from "react-router-dom";
 import './App.css';
 import ROUTES from './Routes.js';
-import Comments from '../components/Comments.js';
-import Posts from '../components/Posts.js';
-import Subreddits from '../components/Subreddits.js';
-import SearchTerm from '../features/searchTerm/SearchTerm.js';
+//import Comments from '../components/Comments.js';
+import Posts from '../features/posts/Posts.js';
+import Subreddits from '../features/subreddits/Subreddits';
+import SearchTerm from '../features/searchTerm/SeacrhTerm';
 
 function App() {
   return (
